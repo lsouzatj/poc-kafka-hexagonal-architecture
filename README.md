@@ -5,7 +5,7 @@
 
 <div align="center">
 
-# POC Arquitetura Hexagonal ou Ports & Adapters Architecture
+# POC Kafka com Arquitetura Hexagonal ou Ports & Adapters Architecture
 
 ![](https://img.shields.io/badge/Autor-Francis%20Leandro%20-brightgreen)
 ![](https://img.shields.io/badge/Language-java-brightgreen)
