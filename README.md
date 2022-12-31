@@ -64,6 +64,7 @@
     - spring-boot-starter-web
     - spring-boot-starter-data-jpa
     - spring-boot-devtools
+    - spring-kafka
 - Lombok
 - Mysql
 - H2
@@ -71,11 +72,14 @@
 - Git
 
 ## Portas
-| Aplicação                | Porta |
-|--------------------------|-------|
-| poc-hexagonal-architecture| 8080  |
+| Aplicação                       | Porta |
+|---------------------------------|-------|
+| poc-kafka-hexagonal-architecture| 8080  |
+| kafka                           | 9092  |
 
 ## Links
 
 - Aplicação
   - http://localhost:8080
+  - http://localhost:9092
+  - https://viacep.com.br/ws/{zipCode}/json/
