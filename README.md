@@ -10,6 +10,7 @@
 ![](https://img.shields.io/badge/Autor-Francis%20Leandro%20-brightgreen)
 ![](https://img.shields.io/badge/Language-java-brightgreen)
 ![](https://img.shields.io/badge/Framework-springboot-brightgreen)
+![](https://img.shields.io/badge/Mensageria-Kafka-brightgreen)
 ![](https://img.shields.io/badge/Arquitetura-Hexagonal-brightgreen)
 
 </div> 
@@ -54,32 +55,93 @@
 
 ##  Pré -requisitos
 
-- [ `Java 17+` ](https://www.oracle.com/java/technologies/downloads/#java17)
-- [ `Docker` ](https://www.docker.com/)
+- [ `Java 19+` ](https://www.oracle.com/java/technologies/downloads/#java19)
+- [ `Maven 3+` ](https://maven.apache.org/download.cgi)
 - [ `Docker-Compose` ](https://docs.docker.com/compose/install/)
+- [ `Docker` ](https://www.docker.com/)
+  - Imagem Apache Kafka
+  - Imagem Apache ZooKeeper
 
 ## Tecnologias
-- Java 17
+- Java 19
+- Apache Maven
+- Apache ZooKeeper
+- Apache Kafka
 - Spring Boot 2.7.7
-    - spring-boot-starter-web
-    - spring-boot-starter-data-jpa
-    - spring-boot-devtools
-    - spring-kafka
+  - spring-boot-starter-web
+  - spring-boot-starter-data-jpa
+  - spring-boot-devtools
 - Lombok
-- Mysql
 - H2
 - Tomcat (Embedded no Spring Boot)
 - Git
 
 ## Portas
-| Aplicação                       | Porta |
-|---------------------------------|-------|
-| poc-kafka-hexagonal-architecture| 8080  |
-| kafka                           | 9092  |
+| Aplicação                        | Porta |
+|----------------------------------|-------|
+| poc-kafka-hexagonal-architecture | 8080  |
+| kafka                            | 9092  |
+| zookeeper                        | 2181  |
 
 ## Links
 
 - Aplicação
   - http://localhost:8080
-  - http://localhost:9092
   - https://viacep.com.br/ws/{zipCode}/json/
+
+>## Setup
+
+### Executando a aplicação com maven
+- Na raiz do projeto execute o seguinte comando:
+  ```
+  ./mvnw clean package -DskipTests
+  ```
+
+### Gerando imagem docker
+- Na raiz do projeto execute o seguinte comando para criar a imagem docker da aplicação:
+  ```
+  docker build --tag hexagonal-architecture .
+  ```  
+
+### Executar docker-compose para subir aplicação com container docker
+- Dentro da pasta docker-compose, execute o seguinte comando para subir os containers:
+  ```
+  docker-compose up -d
+  ```
+- Execute o seguinte comando para verificar os status do containers docker:
+  ```
+  docker-compose ps
+  ```
+
+### Method: POST
+- URL: http://localhost:8080/api/v1/customer/save/{zipCode}
+  #### Payload Request:
+  ```
+  {
+  "name": "Teste-01",
+  "cpf": "001.002.003-04"
+  }
+  ```
+### Method: GET
+- URL: http://localhost:8080/api/v1/customer/findAll
+### Method: GET
+- URL: http://localhost:8080/api/v1/customer/find/{id}
+### Method: PUT
+  - URL: http://localhost:8080/api/v1/customer/update/{id}
+    #### Payload Request:
+    ```
+    {
+    "name": "Teste-02",
+    "cpf": "001.002.003-04"
+    }
+    ```
+### Method: DELETE
+- URL: http://localhost:8080/api/v1/customer/delete/{id}
+  
+#
+  
+>## Desenvolvedores
+
+**Leandro D'Souza**
+- LinkedIn - www.linkedin.com/in/francis-leandro-de-souza
+- GitHub - https://github.com/lsouzatj
